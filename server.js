@@ -2,9 +2,18 @@ const app = require("./app");
 
 const { PORT = 3000 } = process.env;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const sequelize = require("./db");
 
-// .catch((error) => {
-//   console.log(error.message);
-//   process.exit(1);
-// });
+const start = async () => {
+  try {
+    await sequelize.authenticate();
+    await sequelize.sync();
+
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+  } catch (error) {
+    console.log(error.message);
+    process.exit(1);
+  }
+};
+
+start();
