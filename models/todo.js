@@ -2,10 +2,11 @@ const sequelize = require("../db");
 
 const { DataTypes } = require("sequelize");
 
-const Todoes = sequelize.define("todoes", {
+const Todo = sequelize.define("todoes", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   todoText: { type: DataTypes.STRING },
-  isComplited: { type: DataTypes.BOOLEAN, default: false },
+  isComplited: { defaultValue: false, type: DataTypes.BOOLEAN },
+  subNote: { type: DataTypes.ARRAY(DataTypes.INTEGER) },
 });
 
 const Joi = require("joi");
@@ -16,7 +17,17 @@ const joiSchema = Joi.object({
   subNote: Joi.array(),
 });
 
+const joiSchemaText = Joi.object({
+  todoText: Joi.string().trim().required(),
+});
+
+const joiSchemaComplite = Joi.object({
+  isComplited: Joi.bool().required(),
+});
+
 module.exports = {
   joiSchema,
-  Todoes,
+  joiSchemaText,
+  joiSchemaComplite,
+  Todo,
 };
