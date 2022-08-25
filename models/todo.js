@@ -5,16 +5,20 @@ const { DataTypes } = require("sequelize");
 const Todo = sequelize.define("todoes", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   todoText: { type: DataTypes.STRING },
-  isComplited: { defaultValue: false, type: DataTypes.BOOLEAN },
-  subNote: { type: DataTypes.ARRAY(DataTypes.INTEGER) },
+  isComplited: {
+    type: DataTypes.BOOLEAN,
+  },
+  parentId: { type: DataTypes.INTEGER },
 });
 
 const Joi = require("joi");
 
 const joiSchema = Joi.object({
   todoText: Joi.string().trim().required(),
-  isComplited: Joi.bool(),
-  subNote: Joi.array(),
+  isComplited: {
+    type: DataTypes.BOOLEAN,
+    default: false,
+  },
 });
 
 const joiSchemaText = Joi.object({

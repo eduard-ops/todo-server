@@ -26,6 +26,4 @@ router.put("/:todoId", validation(joiSchemaText), ctrlWrapper(ctrl.updateTodo));
 
 router.delete("/:todoId", ctrlWrapper(ctrl.deleteTodo));
 
-// router.put("/signup", validation(joiSchema), ctrlWrapper(ctrl.signup));
-
 module.exports = router;
