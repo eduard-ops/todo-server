@@ -10,11 +10,14 @@ const {
   joiSchema,
   joiSchemaText,
   joiSchemaComplite,
+  joiSchemaChild,
 } = require("../../models/todo");
 
 router.get("/", ctrlWrapper(ctrl.getAll));
 
 router.post("/", validation(joiSchema), ctrlWrapper(ctrl.addTodo));
+
+router.post("/child", ctrlWrapper(ctrl.addTodoChild));
 
 router.put(
   "/:todoId/complite",
@@ -24,6 +27,10 @@ router.put(
 
 router.put("/:todoId", validation(joiSchemaText), ctrlWrapper(ctrl.updateTodo));
 
-router.delete("/:todoId", ctrlWrapper(ctrl.deleteTodo));
+router.delete(
+  "/:todoId",
+  validation(joiSchemaChild),
+  ctrlWrapper(ctrl.deleteTodo)
+);
 
 module.exports = router;
