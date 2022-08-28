@@ -1,10 +1,12 @@
-const { Todo } = require("../../models");
+const db = require("../../db");
 
 const removeTodo = async (id) => {
   try {
-    const todo = Todo.destroy({ where: { id: id } });
-    return todo;
-  } catch (error) {}
+    const todo = db.query("DELETE FROM todo where id = $1", [id]);
+    return todo.rows[0];
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 module.exports = removeTodo;

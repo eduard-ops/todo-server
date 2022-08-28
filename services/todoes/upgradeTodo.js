@@ -1,12 +1,12 @@
-const { Todo } = require("../../models");
+const db = require("../../db");
 
-const updateTodo = async (id, body) => {
+const updateTodo = async (id, text) => {
   try {
-    const todo = await Todo.update(
-      { todoText: body.todoText },
-      { where: { id: id }, returning: true, plain: true }
+    const todo = await db.query(
+      "UPDATE todo set todotext = $1 where id= $2 RETURNING * ",
+      [text, id]
     );
-    return todo;
+    return todo.rows[0];
   } catch (error) {
     console.log(error.message);
   }

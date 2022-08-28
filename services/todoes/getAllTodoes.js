@@ -1,9 +1,9 @@
-const { Todo } = require("../../models");
+const db = require("../../db");
 
 const getAllTodoes = async () => {
   try {
-    const todoes = await Todo.findAll({});
-    return todoes;
+    const todoes = await db.query("SELECT * FROM todo");
+    return todoes.rows;
   } catch (error) {
     console.log(error.message);
   }

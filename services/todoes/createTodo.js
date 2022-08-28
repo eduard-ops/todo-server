@@ -1,9 +1,12 @@
-const { Todo } = require("../../models");
+const db = require("../../db");
 
-const createTodo = async (todoText, subNote, isComplited) => {
+const createTodo = async (todoText, isComplited, parentId) => {
   try {
-    const todo = await Todo.create({ todoText, subNote, isComplited });
-    return todo;
+    const todo = await db.query(
+      `INSERT INTO todo (todotext, iscomplited, parentid) values($1,$2,$3) RETURNING * `,
+      [todoText, isComplited, parentId]
+    );
+    return todo.rows[0];
   } catch (error) {
     console.log(error.message);
   }

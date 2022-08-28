@@ -1,9 +1,9 @@
 const { createTodo } = require("../../services/todoes");
 
 const addTodo = async (req, res) => {
-  const { todoText, subNote, isComplited } = req.body;
+  const { todoText, isComplited, parentId } = req.body;
 
-  const todo = await createTodo(todoText, subNote, isComplited);
+  const todo = await createTodo(todoText, isComplited, parentId);
   console.log(todo);
   return res.status(201).json({ message: "created", code: 201, data: todo });
 };
