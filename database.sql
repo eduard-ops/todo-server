@@ -3,7 +3,7 @@ create TABLE todo(
     todoText VARCHAR(255),
     isComplited BOOLEAN NOT NULL,
     subNotes text[] DEFAULT '{}',
-    perentId INTEGER  
+    parentId VARCHAR(255)
 )
 
 
