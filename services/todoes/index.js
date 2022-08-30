@@ -6,9 +6,12 @@ const removeTodo = require("./removeTodo");
 
 const upgradeTodo = require("./upgradeTodo");
 
+const upgradeCpmplited = require("./upgradeComplited");
+
 module.exports = {
   getAllTodoes,
   createTodo,
   removeTodo,
   upgradeTodo,
+  upgradeCpmplited,
 };
