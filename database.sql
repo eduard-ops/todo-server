@@ -1,5 +1,5 @@
 create TABLE todo( 
-    id SERIAL PRIMARY KEY,
+    id VARCHAR(255),
     todoText VARCHAR(255),
     isComplited BOOLEAN NOT NULL,
     subNotes text[] DEFAULT '{}',
@@ -7,15 +7,3 @@ create TABLE todo(
 )
 
 
-
-ALTER TABLE public.accounts 
-    ALTER COLUMN pwd_history SET DEFAULT array[]::varchar[];
-
-
-ALTER TABLE todo 
-    ALTER COLUMN subnotes SET DEFAULT array[]::integer[];
-
-
-ALTER TABLE todo
-
-  RENAME COLUMN todotext TO todoText
