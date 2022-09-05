@@ -1,10 +1,3 @@
-create TABLE todo( 
-    id VARCHAR(255),
-    todoText VARCHAR(255),
-    isComplited BOOLEAN NOT NULL,
-    parentId VARCHAR(255)
-)
-
 
 create table todo (
     id serial not null,
@@ -13,23 +6,6 @@ create table todo (
     parentid integer,
     constraint id_pk primary key (id)
 )
-
--- insert into todo (todotext, iscomplited, parentid) values ('parent-todo', false, null);
--- insert into todo (todotext,iscomplited, parentid) values ('child-todo', false, 1);
--- insert into todo (todotext,iscomplited, parentid) values ('item2', false, 2);
--- insert into todo (todotext,iscomplited, parentid) values ('subitem1', false, 3);
-
-
-
-
-insert into todo (todotext, iscomplited, parentid) values ('parent-todo-01', false, null);
-insert into todo (todotext,iscomplited, parentid) values ('child-todo', false, 1);
-insert into todo (todotext,iscomplited, parentid) values ('item2', false, 2);
-insert into todo (todotext,iscomplited, parentid) values ('subitem1', false, 3);
-insert into todo (todotext, iscomplited, parentid) values ('parent-todo-02', false, null);
-insert into todo (todotext, iscomplited, parentid) values ('child-todo-01', false, 4);
-insert into todo (todotext, iscomplited, parentid) values ('child-todo-02', false, 5);
-
 
 
 

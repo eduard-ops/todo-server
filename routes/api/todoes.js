@@ -26,4 +26,6 @@ router.patch(
 
 router.delete("/:todoId", ctrlWrapper(ctrl.deleteTodo));
 
+router.delete("/child/:todoId", ctrlWrapper(ctrl.deleteChildTodo));
+
 module.exports = router;

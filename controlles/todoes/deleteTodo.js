@@ -9,7 +9,7 @@ const deleteTodo = async (req, res) => {
     throw createError(404);
   }
 
-  res.json({ message: "Contact deleted" });
+  res.json({ message: "Todo was deleted" });
 };
 
 module.exports = deleteTodo;
