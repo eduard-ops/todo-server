@@ -3,6 +3,7 @@ create table todo (
     id serial not null,
     todoText VARCHAR(255),
     isComplited BOOLEAN NOT NULL,
+    subNotes text[] DEFAULT '{}',
     parentid integer,
     constraint id_pk primary key (id)
 )
