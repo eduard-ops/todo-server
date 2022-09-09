@@ -1,8 +1,10 @@
 const db = require("../../db");
 
+const getAllTodoes = require("./getAllTodoes");
+
 const removeTodo = async (id) => {
   try {
-    const data = await db.query(
+    await db.query(
       `DELETE FROM todo WHERE id IN (
     with recursive all_todo (id,parentid, root_id) as (
         select t1.id,
@@ -19,10 +21,11 @@ const removeTodo = async (id) => {
         join all_todo p on p.id = c1.parentid
     )
     select id from all_todo ap where root_id=$1
-) RETURNING * `,
+) `,
       [id]
     );
-    return data.rows[0];
+    const data = getAllTodoes();
+    return data;
   } catch (error) {
     console.log(error.message);
   }
