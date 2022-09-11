@@ -1,6 +1,14 @@
 
 create table todo (
-    id serial not null,
+    id integer not null,
+    todoText VARCHAR(255),
+    isComplited BOOLEAN NOT NULL,
+    subNotes text[] DEFAULT '{}',
+    parentid integer
+)
+
+create table todo (
+    id integer not null,
     todoText VARCHAR(255),
     isComplited BOOLEAN NOT NULL,
     subNotes text[] DEFAULT '{}',
@@ -8,6 +16,9 @@ create table todo (
     constraint id_pk primary key (id)
 )
 
+-- UPDATE todo SET id=-1 WHERE ID=17;
+-- UPDATE todo SET id=17 WHERE ID=16;
+-- UPDATE todo SET id=16 WHERE ID=-1;
 
 
 ПОСЛЕДОВАТЕЛЬНЫЙ ПУТЬ

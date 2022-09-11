@@ -26,6 +26,8 @@ router.patch(
 
 router.patch("/up/:todoId", ctrlWrapper(ctrl.moveUpTodo));
 
+router.patch("/down/:todoId", ctrlWrapper(ctrl.moveDownTodo));
+
 router.delete("/:todoId", ctrlWrapper(ctrl.deleteTodo));
 
 router.delete("/child/:todoId", ctrlWrapper(ctrl.deleteChildTodo));

@@ -2,6 +2,8 @@ const { upgradeCpmplited } = require("../../services/todoes");
 
 const { createError } = require("../../helpers");
 
+const { parcerTodo } = require("../../helpers");
+
 const updateComplited = async (req, res) => {
   const { todoId } = req.params;
   const { isComplited = false } = req.body;
@@ -12,7 +14,9 @@ const updateComplited = async (req, res) => {
     throw createError(400);
   }
 
-  res.json({ message: "update", code: 200, data: data });
+  const parceTodoes = parcerTodo(data);
+
+  res.json({ message: "update", code: 200, data: parceTodoes });
 };
 
 module.exports = updateComplited;

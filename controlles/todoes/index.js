@@ -12,6 +12,8 @@ const deleteChildTodo = require("./deleteChildTodo");
 
 const moveUpTodo = require("./moveUpTodo");
 
+const moveDownTodo = require("./moveDownTodo");
+
 module.exports = {
   getAll,
   addTodo,
@@ -20,4 +22,5 @@ module.exports = {
   updateComplited,
   deleteChildTodo,
   moveUpTodo,
+  moveDownTodo,
 };

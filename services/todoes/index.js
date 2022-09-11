@@ -12,6 +12,8 @@ const removeChildTodo = require("./removeChildTodo");
 
 const moveUpTodoById = require("./moveUpTodoById");
 
+const moveDownTodoById = require("./moveDownTodoById");
+
 module.exports = {
   getAllTodoes,
   createTodo,
@@ -20,4 +22,5 @@ module.exports = {
   upgradeCpmplited,
   removeChildTodo,
   moveUpTodoById,
+  moveDownTodoById,
 };
