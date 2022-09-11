@@ -1,12 +1,16 @@
 const db = require("../../db");
 
-const updateTodo = async (id, text) => {
+const getAllTodoes = require("./getAllTodoes");
+
+const updateTodo = async (id, text, isComplited = false) => {
   try {
-    const todo = await db.query(
-      "UPDATE todo set todotext = $1 where id= $2 RETURNING * ",
-      [text, id]
+    await db.query(
+      "UPDATE todo set todotext = $1 , iscomplited = $2 where id = $3",
+      [text, isComplited, id]
     );
-    return todo.rows[0];
+    const data = await getAllTodoes();
+
+    return data;
   } catch (error) {
     console.log(error.message);
   }

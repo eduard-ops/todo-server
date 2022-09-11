@@ -9,7 +9,7 @@ const deleteChildTodo = async (req, res) => {
     throw createError(404);
   }
 
-  res.json({ message: "Todo was deleted" });
+  res.json({ message: "Todo was deleted", code: 200, data: data });
 };
 
 module.exports = deleteChildTodo;

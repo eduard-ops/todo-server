@@ -24,7 +24,7 @@ const removeTodo = async (id) => {
 ) `,
       [id]
     );
-    const data = getAllTodoes();
+    const data = await getAllTodoes();
     return data;
   } catch (error) {
     console.log(error.message);

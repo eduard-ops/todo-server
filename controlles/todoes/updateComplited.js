@@ -4,11 +4,9 @@ const { createError } = require("../../helpers");
 
 const updateComplited = async (req, res) => {
   const { todoId } = req.params;
-  const { isComplited } = req.body;
+  const { isComplited = false } = req.body;
 
   const data = await upgradeCpmplited(todoId, isComplited);
-
-  console.log(data);
 
   if (!data) {
     throw createError(400);

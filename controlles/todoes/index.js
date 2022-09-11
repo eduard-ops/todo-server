@@ -10,6 +10,8 @@ const updateComplited = require("./updateComplited");
 
 const deleteChildTodo = require("./deleteChildTodo");
 
+const moveUpTodo = require("./moveUpTodo");
+
 module.exports = {
   getAll,
   addTodo,
@@ -17,4 +19,5 @@ module.exports = {
   updateTodo,
   updateComplited,
   deleteChildTodo,
+  moveUpTodo,
 };
