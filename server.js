@@ -1,13 +1,15 @@
 const app = require("./app");
 
+const pool = require("./db");
+
 const { PORT = 3000 } = process.env;
 
-async function bootstrap() {
-  try {
-    await app.listen(PORT);
-    console.log("let's go");
-  } catch (error) {
-    console.log(error, "disconnect");
-  }
-}
-bootstrap();
+pool
+  .connect()
+  .then(() =>
+    app.listen(PORT, () => console.log("Database connection successful"))
+  )
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });
